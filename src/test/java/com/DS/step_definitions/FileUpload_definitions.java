@@ -43,6 +43,11 @@ public class FileUpload_definitions {
         Assert.assertEquals(fileUpload.successMsg.getText(),message);
         fileUpload.okBtn.click();
     }
+
+    @Then("the {string} tab should not be displayed.")
+    public void theTabShouldNotBeDisplayed(String complete) {
+       Assert.assertEquals(fileUpload.successMsg.getText(),complete);
+    }
 }
 
 

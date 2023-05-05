@@ -9,11 +9,20 @@ Feature: Bill Automation Example
 
 
   @ui @tab
-  Scenario Outline: Verify the Right Number of Cells and Values Appear
+  Scenario Outline:Click The Buttons and Verify the Right Number of Cells and Values Appear
     Given I am on the Simple Table page
-    When I should see all 5 tabs
-    And I verify 2x2
+    And I select a <table_size> table
+    When I click the "Fill Table" button
+    Then the table should have <expected_cells> cells
+    And the table should have <expected_values> values
+
     Examples:
+      | table_size | expected_cells | expected_values |
+      | 2        | 4              | 4               |
+      | 3        | 9              | 9               |
+      | 4        | 16             | 16              |
+      | 5        | 25             | 25              |
+
 
   @ui @loader
   Scenario: Verify the Dynamic Loader loads content on the page
@@ -43,5 +52,7 @@ Feature: Bill Automation Example
     Then I leave "<instructions>" and click Submit
 
     Examples:
-      | firstname | lastname | email             | phone        | address     | apt | city   | state   | instructions    |
+      | firstname | lastname | email             | phone        | address     | apt | city   | state   | instructions             |
       | John      | Doe      | john.doe@test.com | 785-456-7890 | 123 Main St | 305 | Tuscon | Arizona | Dont be late or no TIP!! |
+
+ 
