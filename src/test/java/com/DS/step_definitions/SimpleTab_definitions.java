@@ -1,30 +1,20 @@
 package com.DS.step_definitions;
 import com.DS.pages.BasePage;
-import com.DS.pages.ComplexForm;
+import com.DS.pages.DynamicLoader;
 import com.DS.pages.SimpleTab;
 import com.DS.utilities.ConfigurationReader;
 import com.DS.utilities.Driver;
-import com.github.javafaker.Faker;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-
 
 public class SimpleTab_definitions {
-
-    BasePage basepage=new BasePage();
-    SimpleTab simpleTab=new SimpleTab();
+    BasePage basepage = new BasePage();
+    SimpleTab simpleTab = new SimpleTab();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
     @Given("I am on the Simple Table page")
@@ -33,21 +23,67 @@ public class SimpleTab_definitions {
         Driver.getDriver().manage().window().maximize();
         basepage.simpleTab.click();
     }
-    @Given("I select a {int} table")
-    public void i_select_a_table(Integer int1) {
-
+    @When("I view the 2by2 table")
+    public void iViewTheTableSizeTable() {
+        simpleTab.tableBtn2x2.click();
+        WebElement table = simpleTab.tableBtn2x2;
+        List<WebElement> rows = simpleTab.listOfRows;
+        List<WebElement> cells = simpleTab.listOfCells;
+        int numOfRows = rows.size();
+        int numOfCells = cells.size();
+        int numOfColumns = numOfCells / numOfRows;
+        System.out.println("Table " + table + ":");
+        System.out.println("Number of Rows: " + numOfRows);
+        System.out.println("Number of Cells: " + numOfCells);
+        System.out.println("Number of Columns: " + numOfColumns);
     }
-    @When("I click the {string} button")
-    public void i_click_the_button(String string) {
-
+    @Then("I view the 3by3 table")
+    public void iViewTheByTable() {
+        simpleTab.tableBtn3x3.click();
+        WebElement table = simpleTab.tableBtn3x3;
+        List<WebElement> rows = simpleTab.listOfRows;
+        List<WebElement> cells = simpleTab.listOfCells;
+        int numOfRows = rows.size();
+        int numOfCells = cells.size();
+        int numOfColumns = numOfCells / numOfRows;
+        System.out.println("Table " + table + ":");
+        System.out.println("Number of Rows: " + numOfRows);
+        System.out.println("Number of Cells: " + numOfCells);
+        System.out.println("Number of Columns: " + numOfColumns);
     }
-    @Then("the table should have {int} cells")
-    public void the_table_should_have_cells(Integer int1) {
-        System.out.println("simpleTab.listOfCells.size() = " + simpleTab.listOfCells.size());
+    @And("I view the 4by4 table")
+    public void iViewTheByTable4() {
+        simpleTab.tableBtn4x4.click();
+        WebElement table = simpleTab.tableBtn4x4;
+        List<WebElement> rows = simpleTab.listOfRows;
+        List<WebElement> cells = simpleTab.listOfCells;
+        int numOfRows = rows.size();
+        int numOfCells = cells.size();
+        int numOfColumns = numOfCells / numOfRows;
+        System.out.println("Table " + table + ":");
+        System.out.println("Number of Rows: " + numOfRows);
+        System.out.println("Number of Cells: " + numOfCells);
+        System.out.println("Number of Columns: " + numOfColumns);
     }
-    @Then("the table should have {int} values")
-    public void the_table_should_have_values(Integer int1) {
-        System.out.println("simpleTab.getColumnCount() = " + simpleTab.getColumnCount());
+    @And("I view the 5by5 table")
+    public void iViewTheByTable5() {
+        simpleTab.tableBtn5x5.click();
+        WebElement table = simpleTab.tableBtn5x5;
+        List<WebElement> rows = simpleTab.listOfRows;
+        List<WebElement> cells = simpleTab.listOfCells;
+        int numOfRows = rows.size();
+        int numOfCells = cells.size();
+        int numOfColumns = numOfCells / numOfRows;
+        System.out.println("Table " + table + ":");
+        System.out.println("Number of Rows: " + numOfRows);
+        System.out.println("Number of Cells: " + numOfCells);
+        System.out.println("Number of Columns: " + numOfColumns);
     }
-
+    @Then("i click and verify hideButton")
+    public void iClickAndVerifyHideButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(simpleTab.hideTable));
+        simpleTab.hideTable.click();
+        assert simpleTab.hideTable.isDisplayed();
+    }
 }
+

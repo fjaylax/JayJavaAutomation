@@ -7,30 +7,12 @@ Feature: Bill Automation Example
     And I click on the "Upload" button
     Then I should see a success message "File Was Successfully Uploaded!"
 
-
-  @ui @tab
-  Scenario Outline:Click The Buttons and Verify the Right Number of Cells and Values Appear
-    Given I am on the Simple Table page
-    And I select a <table_size> table
-    When I click the "Fill Table" button
-    Then the table should have <expected_cells> cells
-    And the table should have <expected_values> values
-
-    Examples:
-      | table_size | expected_cells | expected_values |
-      | 2        | 4              | 4               |
-      | 3        | 9              | 9               |
-      | 4        | 16             | 16              |
-      | 5        | 25             | 25              |
-
-
   @ui @loader
   Scenario: Verify the Dynamic Loader loads content on the page
     Given the user is on the Dynamic Loader page
     When the user verifies that the dynamic loading progress bar is visible
     And the user verifies that the "Loading . . ." progress tab is displayed
     Then the user verifies that the "Complete!" tab is displayed after the content has loaded.
-
   @ui @download
   Scenario: Verify file download functionality
     Given I am on the File Download page
@@ -39,6 +21,14 @@ Feature: Bill Automation Example
     Then the file should start downloading
     And the download should complete successfully
 
+   @ui  @tab
+    Scenario: Verify the Right Number of Cells and Values Appear
+      Given I am on the Simple Table page
+      When I view the 2by2 table
+      Then I view the 3by3 table
+       And I view the 4by4 table
+       And I view the 5by5 table
+       Then i click and verify hideButton
 
   @ui @form
   Scenario Outline: Fill out complex form and verify success message and second page
