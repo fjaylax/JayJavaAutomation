@@ -20,5 +20,11 @@ public class FileUpload extends BasePage{
     @FindBy (xpath = "//*[@id=\"detail\"]/div/input ")
     public WebElement chooseFile;
 
+    @FindBy (xpath = "//h2[contains(text(),'File Was')]")
+    public WebElement successMsg;
+
+    @FindBy (xpath = "//button[normalize-space()='OK']")
+    public WebElement okBtn;
+
 
 }

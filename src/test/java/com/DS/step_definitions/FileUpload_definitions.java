@@ -4,8 +4,9 @@ import com.DS.pages.FileUpload;
 import com.DS.utilities.ConfigurationReader;
 import com.DS.utilities.Driver;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebElement;
+import org.junit.Assert;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class FileUpload_definitions {
@@ -14,7 +15,7 @@ public class FileUpload_definitions {
     BasePage basePage=new BasePage();
     FileUpload fileUpload=new FileUpload();
     String uploadPath="/Users/Alen/Desktop/Alen Medeubayev- Resume.docx";
-    private WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30 );
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30 );
 
     @Given("I am on the File Upload page")
     public void i_am_on_the_file_upload_page() {
@@ -27,23 +28,21 @@ public class FileUpload_definitions {
         fileUpload.chooseFile.sendKeys(uploadPath);
     }
     @When("I click on the {string} button")
-    public void i_click_on_the_button(String string) throws InterruptedException {
-        fileUpload.fileUpload.click();
-
+    public void i_click_on_the_button(String btn)  {
+        //One step_Definition for all buttons
+        switch (btn){
+            case "Upload":
+                wait.until(ExpectedConditions.elementToBeClickable(fileUpload.upload));
+                fileUpload.upload.click();
+                break;
+        }
     }
     @Then("I should see a success message {string}")
     public void i_should_see_a_success_message(String message) {
-
-
+        wait.until(ExpectedConditions.visibilityOf(fileUpload.successMsg));
+        Assert.assertEquals(fileUpload.successMsg.getText(),message);
+        fileUpload.okBtn.click();
     }
-    @Then("the file should be displayed on the page")
-    public void the_file_should_be_displayed_on_the_page() {
-
-    }
-
-
-
-
 }
 
 

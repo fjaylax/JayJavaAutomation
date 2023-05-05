@@ -11,7 +11,7 @@ public class DynamicLoader extends BasePage{
     }
 
     @FindBy(xpath = "//h2[normalize-space()='Verify Loading Eventually Completes']")
-    public WebElement dynamicLoaderHeader;
+    public WebElement header;
 
     @FindBy(xpath = "(//div[.='Loading . . .'])[2] ")
     public WebElement loadingTab;
@@ -21,4 +21,7 @@ public class DynamicLoader extends BasePage{
 
     @FindBy(xpath = "(//div[.='Complete!'])[2]")
     public WebElement completeTab;
+
+    @FindBy(xpath = "//*[@id=\"detail\"]/div[1]/span/span")
+    public WebElement dynamicLoadingProgressBar;
 }

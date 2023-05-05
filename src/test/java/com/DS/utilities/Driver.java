@@ -26,7 +26,7 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                  driverPool.set(new ChromeDriver());
                     driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();

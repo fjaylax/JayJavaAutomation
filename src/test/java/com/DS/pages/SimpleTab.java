@@ -8,8 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class SimpleTab extends BasePage {
-    public SimpleTab() {PageFactory.initElements(Driver.getDriver(),this);
+    public SimpleTab() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(css = "button:nth-child(1)")
     public WebElement hideTable;
 
@@ -28,8 +30,18 @@ public class SimpleTab extends BasePage {
     @FindBy(xpath = "//h2[contains(text(),'Click The Buttons and Verify the Right Number of C')]")
     public WebElement headerText;
 
-    @FindBy(xpath = "//td[@class='ng-binding' and .='Approved']")
-    public List<WebElement> loansApprovedColumns;
+    @FindBy(xpath = "//button[contains(@class, 'MuiButtonBase-root')]")
+    public List<WebElement> simpleTablePageButtons;
+
+    @FindBy(xpath = "//tr[contains(@class, 'MuiTableRow-root')]")
+    public List<WebElement> listOfRows;
+
+    @FindBy(xpath = "//td[contains(@class, 'MuiTableCell-root')]")
+    public List<WebElement> listOfCells;
 
 
+    public int getColumnCount() {
+
+          return listOfCells.size()/listOfRows.size();
+    }
 }

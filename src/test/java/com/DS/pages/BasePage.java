@@ -23,7 +23,7 @@ public class BasePage {
     @FindBy(xpath = "//a[text()='Dynamic Loader']")
     public WebElement dynamicLoader;
 
-    @FindBy (xpath = "//a[.='Complex Form']  ")
-    public WebElement complexForm;
+    @FindBy (xpath = "//a[text()='Complex Form']")
+    public WebElement complexform;
 
 }
