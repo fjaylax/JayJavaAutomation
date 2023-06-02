@@ -14,7 +14,7 @@ public class FileUpload_definitions {
 
     BasePage basePage=new BasePage();
     FileUpload fileUpload=new FileUpload();
-    String uploadPath="/Users/Alen/Desktop/Alen Medeubayev- Resume.docx";
+    String uploadPath="/Users/Alen/Desktop/Alen Medeubayev- Resume.docx"; //todo finish
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30 );
 
     @Given("I am on the File Upload page")
